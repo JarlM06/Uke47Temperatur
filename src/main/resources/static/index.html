@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <title>Title</title>
+</head>
+<body>
+    <label for="months"></label>
+    <select name="months" id="months">
+        <option value="januar">Januar</option>
+        <option value="februar">Februar</option>
+        <option value="mars">Mars</option>
+        <option value="april">April</option>
+        <option value="mai">Mai</option>
+        <option value="juni">Juni</option>
+        <option value="juli">Juli</option>
+        <option value="august">August</option>
+        <option value="september">September</option>
+        <option value="oktober">Oktober</option>
+        <option value="november">November</option>
+        <option value="desember">Desember</option>
+    </select> <br> <br>
+
+    <button id="finnTemp">Finn Temperatur</button> <br> <br>
+
+    <h3 id="ut"></h3>
+
+    <script type="application/javascript">
+        $("#finnTemp").click(function() {
+            const selectedMonth = $("#months").val();
+
+            $.get("/", { month: selectedMonth }, function (data) {
+                $("#ut").html("Temperatur for " + selectedMonth + " er " + data);
+            });
+        });
+    </script>
+</body>
+</html>
